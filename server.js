@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json()); // Parse JSON requests
 
 const corsOptions = {
-  origin: "*", // Replace with your frontend domain
+  origin: process.env.REACT_APP_API_URL, // Replace with your frontend domain
   credentials: true, // Allow cookies
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   allowedHeaders: "Content-Type, Authorization", //allow these headers.
