@@ -11,6 +11,7 @@ const {
   getOptimized,
   forkSnippet,
   getOriginalSnippet,
+  getExtSnippets
 } = require("../controllers/snippetController");
 
 // 🔹 CRUD Endpoints
@@ -20,6 +21,7 @@ router.post("/optimized-code", authMiddleware, getOptimized); // Get optimized c
 
 router.post("/fork-snippet", authMiddleware, forkSnippet); // Fork a snippet
 router.get("/", authMiddleware, getSnippets); // Get all snippets
+router.get("/ext-snippets", authMiddleware, getExtSnippets); // Get all snippets for the logged-in user and Admin
 
 router.put("/edit-snippet/:id", authMiddleware, updateSnippet); // Update snippet (Replace with AI-optimized code if needed)
 router.get("/original-snippet/:id", authMiddleware, getOriginalSnippet); // Get single snippet

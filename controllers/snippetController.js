@@ -75,7 +75,19 @@ const getUserSnippets = async (req, res) => {
   }
 };
 
-// ✅ Get a single snippet by ID
+// ✅ Get all snippets for the logged-in user and Admin
+const getExtSnippets = async (req, res) => {
+  try {
+    const snippets = await Snippet.find({ user: req.user.id || user.username === 'Admin' });
+    res.status(200).json({ snippets });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error fetching snippets", error: error.message });
+  }
+};
+
+// ✅ Get all details of a single snippet by ID
 const getSnippetById = async (req, res) => {
   try {
     const snippet = await Snippet.findById(req.params.id);
@@ -205,4 +217,5 @@ module.exports = {
   getOptimized,
   forkSnippet,
   getOriginalSnippet,
+  getExtSnippets
 };
