@@ -30,7 +30,7 @@ const createSnippet = async (req, res) => {
 
     const response = JSON.parse(aiResponse);
 
-    console.log("User: ", req.user);
+    // console.log("User: ", req.user);
 
     const snippet = new Snippet({
       user: req.user.id,
